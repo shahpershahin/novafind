@@ -1,0 +1,7 @@
+openai
+requests
+streamlit
+python-dotenv
+langgraph
+google-generativeai
+python-dotenv
