@@ -10,6 +10,6 @@ def refine_idea(raw_idea: str) -> str:
         "Refine the following research idea, clarify its scope, and translate it into technical/research language:\n\n"
         f"{raw_idea}\n\nRefined idea:"
     )
-    model = genai.GenerativeModel("models/gemini-1.5-pro-latest")
+    model = genai.GenerativeModel("models/gemini-1.5-flash-latest")  # Use the free-tier model
     response = model.generate_content(prompt)
     return response.text.strip()

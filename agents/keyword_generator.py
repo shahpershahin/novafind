@@ -11,7 +11,7 @@ def generate_keywords(refined_idea: str) -> list:
         "Expand with synonyms and related terms. Output as a comma-separated list:\n\n"
         f"{refined_idea}\n\nKeywords:"
     )
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("models/gemini-1.5-flash-latest")  # Use the free-tier model
     response = model.generate_content(prompt)
     keywords = response.text.strip()
     return [k.strip() for k in keywords.split(",") if k.strip()]

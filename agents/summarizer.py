@@ -13,6 +13,6 @@ def summarize_findings(papers, patents):
     for pat in patents:
         prompt += f"- {pat['title']}: {pat['abstract']}\n"
     prompt += "\nSummary:"
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
     response = model.generate_content(prompt)
     return response.text.strip()
