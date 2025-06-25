@@ -6,3 +6,7 @@ langgraph
 google-generativeai
 python-dotenv
 uvicorn
+fastapi
+requests
+pydantic
+python-dotenv
