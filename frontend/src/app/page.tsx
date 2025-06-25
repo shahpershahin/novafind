@@ -36,11 +36,12 @@ export default function Home() {
         await new Promise((r) => setTimeout(r, 300));
       }
 
-      const res = await fetch('http://localhost:8000/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idea }),
-      });
+   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ idea }),
+});
+
 
       if (!res.ok) {
         throw new Error('Backend error');
