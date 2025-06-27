@@ -1,5 +1,5 @@
-# main_api.py
-from fastapi import FastAPI, Request
+import os
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from agents.idea_refiner import refine_idea
@@ -10,11 +10,28 @@ from agents.summarizer import summarize_findings
 from report_generator import generate_report
 
 app = FastAPI()
+from dotenv import load_dotenv
+load_dotenv()
 
-# Allow CORS for your frontend
+
+# Determine environment
+IS_LOCAL = os.environ.get("ENV", "local") == "local"
+
+# Set allowed origins
+if IS_LOCAL:
+    origins = [
+        "http://localhost:3000",
+        "http://localhost:3001"
+    ]
+else:
+    origins = [
+        "https://novafind.vercel.app"
+    ]
+
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For dev, restrict in prod!
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
